@@ -11,6 +11,7 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 const verifyToken = process.env.VERIFY_TOKEN;
 console.log(port);
+console.log(verifyToken);
 
 // Route for GET requests
 app.get('/', (req, res) => {
