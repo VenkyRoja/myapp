@@ -1,10 +1,6 @@
-// Import Express.js
+
 const express = require('express');
-
-// Create an Express app
 const app = express();
-
-// Middleware to parse JSON bodies
 app.use(express.json());
 
 // Set port and verify_token
@@ -15,10 +11,16 @@ console.log(verifyToken);
 
 // Route for GET requests
 app.get('/', (req, res) => {
-  const { 'hub.mode': mode, 'hub.challenge': challenge, 'hub.verify_token': token } = req.query;
+  //const { 'hub.mode': mode, 'hub.challenge': challenge, 'hub.verify_token': token } = req.query;
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
 
-  console.log(mode);
-  console.log(token);
+  console.log('mode:', mode);
+  console.log('token:', token);
+  console.log('env VERIFY_TOKEN:', verifyToken);
+  console.log('challenge:', challenge);
+  
   if (mode === 'subscribe' && token === verifyToken) {
     console.log('debug1');
     console.log('WEBHOOK VERIFIED');
