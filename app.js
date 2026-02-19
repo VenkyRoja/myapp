@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
   const { 'hub.mode': mode, 'hub.challenge': challenge, 'hub.verify_token': token } = req.query;
 
   console.log(mode);
+  console.log(token);
   if (mode === 'subscribe' && token === verifyToken) {
     console.log('debug1');
     console.log('WEBHOOK VERIFIED');
